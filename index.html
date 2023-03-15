@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <title>3D Chess Game</title>
@@ -8,30 +7,17 @@
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.0/dist/aframe-extras.min.js"></script>
 </head>
-
 <body>
   <a-scene>
     <!-- <a-assets>
     </a-assets> -->
-
     <a-entity id="cube-container" position="-2.5 0 -3.5"></a-entity>
-
-    <a-entity camera look-controls position="0 1.6 0">
-      <a-entity cursor="fuse: true; fuseTimeout: 500"
-        position="0 0 -1"
-        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-        material="color: white; shader: flat">
-      </a-entity>
-    </a-entity>
-
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
     <a-entity id="left-hand" tracked-controls="controller: 0" controller-cursor></a-entity>
     <a-entity id="right-hand" tracked-controls="controller: 1" controller-cursor></a-entity>
-
-    <a-entity cube-selector></a-entity>
+    <!-- <a-entity cube-selector></a-entity> -->
   </a-scene>
-
   <script src="setup.js"></script>
-  <script src="cube-selector.js"></script>
+  <!-- <script src="cube-selector.js"></script> -->
 </body>
-
 </html>
