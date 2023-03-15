@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Hello, World! - A-Frame</title>
     <meta name="description" content="Hello, World! - A-Frame">
+    <a-asset-item id="flyinghero" src="assets/models/flyinghero.gltf"></a-asset-item>
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
   </head>
   <body>
@@ -13,6 +14,9 @@
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
+      <a-entity id="rightHandPivot">
+        <a-entity id="rightHand" flyinghero ></a-entity>
+      </a-entity>
     </a-scene>
   </body>
 </html>
