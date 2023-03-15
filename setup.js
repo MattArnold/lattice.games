@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var container = document.querySelector('#cube-container');
+  var container = document.querySelector("#cube-container");
 
   // Define the size of the grid
   var width = 5;
@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var y = 0; y < height; y++) {
       for (var z = 0; z < depth; z++) {
         var position = `${x} ${y} ${z}`;
-        var cube = document.createElement('a-entity');
-        cube.setAttribute('position-cube', `position: ${position}`);
+        var cube = document.createElement("a-entity");
+        cube.setAttribute("position-cube", `position: ${position}`);
         container.appendChild(cube);
       }
     }
   }
-}
+});
