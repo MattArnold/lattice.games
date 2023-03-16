@@ -5,6 +5,7 @@ AFRAME.registerComponent('position-cube', {
   },
   init: function () {
     var position = this.data.position;
+    var size = this.data.size;
     var id = `cube-${position.x}-${position.y}-${position.z}`;
     var el = this.el;
     el.setAttribute('id', id);
