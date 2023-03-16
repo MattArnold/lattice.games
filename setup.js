@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.querySelector("#cube-container");
 
   // Define the size of the grid
-  const width = 5;
-  const height = 5;
-  const depth = 7;
+  const width = 3;
+  const height = 3;
+  const depth = 5;
 
   const size = 0.5;
 
