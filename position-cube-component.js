@@ -1,6 +1,7 @@
 AFRAME.registerComponent('position-cube', {
   schema: {
-    position: {type: 'vec3'}
+    position: {type: 'vec3'},
+    size: {type: 'number', default: 0.3}
   },
   init: function () {
     var position = this.data.position;
@@ -11,9 +12,9 @@ AFRAME.registerComponent('position-cube', {
     el.setAttribute('wireframe', 'true');
     el.setAttribute('geometry', {
       primitive: 'box',
-      width: 0.3,
-      height: 0.3,
-      depth: 0.3
+      width: size,
+      height: size,
+      depth: size
     });
   }
 });
