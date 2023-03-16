@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const height = 5;
   const depth = 7;
 
-  const size = 0.8;
+  const size = 0.5;
 
   // Loop through the positions and create a cube for each one
   for (let x = 0; x < width; x++) {
