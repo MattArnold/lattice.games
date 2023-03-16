@@ -6,7 +6,7 @@ AFRAME.registerComponent('position-cube', {
   init: function () {
     var position = this.data.position;
     var id = `cube-${position.x}-${position.y}-${position.z}`;
-    var el = el;
+    var el = this.el;
     el.setAttribute('id', id);
     el.setAttribute('position', position);
     el.setAttribute('wireframe', 'false');
