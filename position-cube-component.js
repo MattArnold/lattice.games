@@ -10,8 +10,7 @@ AFRAME.registerComponent('position-cube', {
     var el = this.el;
     el.setAttribute('id', id);
     el.setAttribute('position', position);
-    el.setAttribute('wireframe', 'false');
-    el.setAttribute('material', 'color: blue');
+    el.setAttribute('wireframe', 'true');
     el.setAttribute('geometry', {
       primitive: 'box',
       width: size,
