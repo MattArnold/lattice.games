@@ -1,6 +1,5 @@
 AFRAME.registerComponent('position-cube', {
   schema: {
-    position: {type: 'vec3'},
     size: {type: 'number', default: 0.3}
   },
   init: function () {
