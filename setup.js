@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector("#cube-container");
+  const container = document.createElement("a-entity");
+  container.setAttribute("id", "cube-container");
+  container.setAttribute("position", "0 0 0");
 
   // Define the size of the grid
   const width = 3;
@@ -20,4 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+  document.querySelector("a-scene").appendChild(container);
 });
