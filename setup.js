@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         latticeEntity.setAttribute('load-gltf-model', {
           url: latticeUrl,
           scale: { x: cubesize, y: cubesize, z: cubesize },
-          material: { color: '#006199', opacity: 1 }
+          material: { color: '#006199', opacity: 0.5 }
         });
         container.appendChild(latticeEntity);
       }
