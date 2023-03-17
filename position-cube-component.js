@@ -4,17 +4,21 @@ AFRAME.registerComponent('position-cube', {
   },
   init: function () {
     var position = this.data.position;
-    var size = this.data.size;
+    var size = this.data.size * 3.3;
     var id = `cube-${position.x}-${position.y}-${position.z}`;
     var el = this.el;
     el.setAttribute('id', id);
     el.setAttribute('position', position);
-    el.setAttribute('wireframe', 'true');
     el.setAttribute('geometry', {
       primitive: 'box',
       width: size,
       height: size,
       depth: size
+    });
+    el.setAttribute('material', {
+      color: '#006199',
+      opacity: 0.1,
+      wireframe: true
     });
   }
 });

@@ -1,27 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.createElement("a-entity");
   container.setAttribute("id", "cube-container");
-  container.setAttribute("position", "0 0 0");
-
+  
   // Define the size of the grid
-  const width = 3;
-  const height = 3;
-  const depth = 5;
+  const spaceswide = 5;
+  const spaceshigh = 3;
+  const spacesdeep = 3;
+  
+  const cubesize = 1;
 
-  const size = 0.5;
+  container.setAttribute("position", `${-(spaceswide * cubesize)/2} ${-(spaceshigh * cubesize)/2} ${-(spacesdeep * cubesize)/2}`);
 
   // Loop through the positions and create a cube for each one
-  for (let x = 0; x < width; x++) {
-    for (let y = 0; y < height; y++) {
-      for (let z = 0; z < depth; z++) {
-        let position = `${x * size} ${y * size} ${z * size}`;
+  for (let x = 0; x < spaceswide; x++) {
+    for (let y = 0; y < spaceshigh; y++) {
+      for (let z = 0; z < spacesdeep; z++) {
+        let position = `${x * cubesize} ${y * cubesize} ${z * cubesize}`;
         let cube = document.createElement("a-entity");
         cube.setAttribute("position-cube", `position: ${position}`);
-        cube.setAttribute("size", size);
+        cube.setAttribute("size", cubesize);
         container.appendChild(cube);
       }
     }
   }
-
+  
   document.querySelector("a-scene").appendChild(container);
 });
