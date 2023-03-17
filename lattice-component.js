@@ -1,8 +1,9 @@
-AFRAME.registerComponent('load-gltf-model', {
+AFRAME.registerComponent('lattice', {
   schema: {
     url: { type: 'string' },
     scale: { type: 'vec3', default: { x: 1, y: 1, z: 1 } },
-    material: { default: null }
+    material: { default: null },
+    position: { type: 'string' }
   },
 
   init: function () {
@@ -19,7 +20,11 @@ AFRAME.registerComponent('load-gltf-model', {
       });
 
       const scale = this.data.scale;
-      gltf.scene.scale.set(scale.x, scale.y, scale.z);
+      const upscale = 1.66;
+      gltf.scene.scale.set(scale.x * upscale, scale.y * upscale, scale.z * upscale);
+
+      const position = this.data.position.split(' ').map(parseFloat);
+      gltf.scene.position.set(position[0], position[1], position[2]);
 
       this.el.setObject3D('mesh', gltf.scene);
     });

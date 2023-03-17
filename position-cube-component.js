@@ -1,6 +1,7 @@
 AFRAME.registerComponent('position-cube', {
   schema: {
-    size: {type: 'number', default: 0.3}
+    size: {type: 'number', default: 0.3},
+    position: {type: 'string', default: '0 0 0'}
   },
   init: function () {
     var position = this.data.position;

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const spaceswide = 5;
   const spaceshigh = 3;
   const spacesdeep = 3;
-  const cubesize = 1;
+  const cubesize = 0.3;
 
   container.setAttribute("position", `${-(spaceswide * cubesize)/2} ${-(spaceshigh * cubesize)/2} ${-(spacesdeep * cubesize)/2}`);
 
@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
         container.appendChild(cube);
 
         // Create lattice visible to player, to surround the clickable cube
-        let latticeEntity = document.createElement('a-entity');
-        latticeEntity.setAttribute('position', position);
-        latticeEntity.setAttribute('load-gltf-model', {
+        let lattice = document.createElement('a-entity');
+        lattice.setAttribute('lattice', {
           url: latticeUrl,
           scale: { x: cubesize, y: cubesize, z: cubesize },
-          material: { color: '#006199', opacity: 0.5 }
+          material: { color: '#006199', opacity: 0.5 },
+          position: position
         });
-        container.appendChild(latticeEntity);
+        container.appendChild(lattice);
       }
     }
   }
