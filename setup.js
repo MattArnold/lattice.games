@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const latticeUrl = './lattice.gltf';
 
   // Define the cubesize of the grid
-  const spaceswide = 5;
-  const spaceshigh = 3;
-  const spacesdeep = 3;
+  const spaceswide = 2;
+  const spaceshigh = 2;
+  const spacesdeep = 2;
   const cubesize = 0.3;
 
   container.setAttribute("position", `${-(spaceswide * cubesize)/2} ${-(spaceshigh * cubesize)/2} ${-(spacesdeep * cubesize)/2}`);
@@ -24,14 +24,21 @@ document.addEventListener("DOMContentLoaded", function () {
         let cube = document.createElement("a-entity");
         cube.setAttribute("position-cube", `position: ${position}`);
         cube.setAttribute("size", cubesize);
+        cube.setAttribute("selectable", "");
+        cube.setAttribute("selected", false);
         container.appendChild(cube);
 
         // Create lattice visible to player, to surround the clickable cube
         let lattice = document.createElement('a-entity');
+        const color = new THREE.Color(
+          Math.floor((x / spaceswide) * 256) / 256,
+          Math.floor((y / spaceshigh) * 256) / 256,
+          Math.floor((z / spacesdeep) * 256) / 256
+        );
         lattice.setAttribute('lattice', {
           url: latticeUrl,
           scale: { x: cubesize, y: cubesize, z: cubesize },
-          material: { color: '#006199', opacity: 0.5 },
+          material: { color: `#${color.getHexString()}`, opacity: 0.5 },
           position: position
         });
         container.appendChild(lattice);
