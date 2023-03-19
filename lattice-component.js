@@ -20,8 +20,8 @@ AFRAME.registerComponent('lattice', {
       });
 
       const scale = this.data.scale;
-      const upscale = 1.66;
-      gltf.scene.scale.set(scale.x * upscale, scale.y * upscale, scale.z * upscale);
+      // const upscale = 0.66;
+      // gltf.scene.scale.set(scale.x * upscale, scale.y * upscale, scale.z * upscale);
 
       const position = this.data.position.split(' ').map(parseFloat);
       gltf.scene.position.set(position[0], position[1], position[2]);

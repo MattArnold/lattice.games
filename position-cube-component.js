@@ -1,83 +1,72 @@
-AFRAME.registerComponent('position-cube', {
+AFRAME.registerComponent('position-cube-with-lattice', {
   schema: {
-    size: { type: 'number', default: 0.3 }
+    size: { type: 'number', default: 0.3 },
   },
   init: function () {
-    const position = this.data.position;
+    const position = this.el.getAttribute('position');
     const size = this.data.size * 3.3;
     const id = `cube-${position.x}-${position.y}-${position.z}`;
     const el = this.el;
-    el.setAttribute('id', id);
-    el.setAttribute('position', position);
-    el.setAttribute('geometry', {
+    
+    const cubeEl = document.createElement("a-entity");
+    cubeEl.setAttribute('id', id);
+    cubeEl.setAttribute('position', position);
+    cubeEl.setAttribute('geometry', {
       primitive: 'box',
       width: size,
       height: size,
       depth: size
     });
-    el.setAttribute('material', {
-      color: '#7393B3',
+    const cubeColor = '#7393B3'
+    const hoveredCubeMaterial = {
+      color: cubeColor,
+      opacity: 0.33,
+      wireframe: true
+    }
+    const deselectedCubeMaterial = {
+      color: cubeColor,
       opacity: 0,
-      wireframe: false
-    });
-    el.setAttribute('selectable', '');
-    el.setAttribute('selected', false);
+      wireframe: true
+    }
+    const selectedCubeMaterial = {
+      color: cubeColor,
+      opacity: 1,
+      wireframe: true
+    }
+    cubeEl.setAttribute('material', deselectedCubeMaterial);
+    cubeEl.setAttribute('selectable', true);
+    cubeEl.setAttribute('selected', false);
 
-    el.addEventListener('mouseenter', () => {
-      if (el.getAttribute('selectable') !== null) {
-        el.setAttribute('material', {
-          color: '#7393B3',
-          opacity: 0.33,
-          wireframe: false
-        });
+    cubeEl.addEventListener('mouseenter', () => {
+      if (selectable) {
+        cubeEl.setAttribute('material', hoveredCubeMaterial);
       }
     });
 
-    el.addEventListener('mouseleave', () => {
-      if (el.getAttribute('selectable') !== null) {
-        if (el.getAttribute('selected') === 'true') {
-          el.setAttribute('material', {
-            color: '#7393B3',
-            opacity: 1,
-            wireframe: false
-          });
-        } else {
-          el.setAttribute('material', {
-            color: '#7393B3',
-            opacity: 0,
-            wireframe: false
-          });
-        }
+    cubeEl.addEventListener('mouseleave', () => {
+      const selectable = cubeEl.getAttribute('selectable');
+      const selected = cubeEl.getAttribute('selected');
+      if (selectable) {
+        cubeEl.setAttribute('material', selected ? selectedCubeMaterial : deselectedCubeMaterial);
       }
     });
 
-    el.addEventListener('grab-start', () => {
-      if (el.getAttribute('selectable') !== null) {
-        el.setAttribute('selected', true);
-        el.setAttribute('material', {
-          color: '#7393B3',
-          opacity: 1,
-          wireframe: false
-        });
+    cubeEl.addEventListener('grab-end', () => {
+      if (selectable) {
+        cubeEl.setAttribute('selected', true);
+        cubeEl.setAttribute('material', selectedCubeMaterial);
       }
     });
 
-    el.addEventListener('grab-end', () => {
-      if (el.getAttribute('selectable') !== null) {
-        if (el.getAttribute('selected') === 'true') {
-          el.setAttribute('material', {
-            color: '#7393B3',
-            opacity: 1,
-            wireframe: false
-          });
-        } else {
-          el.setAttribute('material', {
-            color: '#7393B3',
-            opacity: 0,
-            wireframe: false
-          });
-        }
-      }
-    });
+    // const latticeEl = document.createElement('a-entity');
+    // latticeEl.setAttribute('lattice', {
+    //   url: "./lattice.gltf",
+    //   scale: { x: 1, y: 1, z: 1 },
+    //   material: { color: '#006199', opacity: 0.5 },
+    //   position: "0 0 0"
+    // });
+    
+    // cubeEl.appendChild(latticeEl);
+    el.appendChild(cubeEl);
   }
 });
